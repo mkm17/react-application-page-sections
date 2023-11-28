@@ -1,0 +1,34 @@
+name: SPFx CICD with Office 365 CLI
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v1
+      
+    # Setup node.js runtime
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.13.0
+    
+    # npm install
+    - name: Run npm ci
+      run: npm ci
+    
+    # install gulp if mac
+    - name: Run npm i -g gulp
+      run: npm i -g gulp
+      if: runner.os == 'macOS'
+    
+    # gulp bundle and package solution
+    - name: Bundle and package
+      run: |
+        gulp bundle --ship
+        gulp package-solution --ship    
+    
