@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://contoso.sharepoint.com/",
+      "customActions": {
+        "d5760b69-c5a1-491b-a449-b4ce2dadc4b0": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "globalSectionsUrl": "https://contoso.sharepoint.com"
+          }
+        }
+      }
+    },
+    "pageSections": {
+      "pageUrl": "https://contoso.sharepoint.com/",
+      "customActions": {
+        "d5760b69-c5a1-491b-a449-b4ce2dadc4b0": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "globalSectionsUrl": "https://contoso.sharepoint.com"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.buttonHeader {
+    display: flex;
+    justify-content: space-between;
+}
+.jsonTemplate {
+    display: none;
+}
+.iconContainer {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    .previewIconContainer {
+        width: 82px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        .iconPreview {
+            font-size: 16px;
+        }
+    }
+    .removeIcon {
+        margin-top: 5px;
+        cursor: pointer;
+    }
+    .iconPickerPanel {
+        z-index: 1000002;
+    }
+}
+.copiedToClipboardButton {
+    color: #02767a;
+}
+.copyButton {
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+    display: inline;
+    padding: 7px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.footerButtons {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.copyJsonIcon {
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+:global(#copyOptionsContainer) {
+    margin-top: 6px;
+}
