@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="PageSections"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="d5760b69-c5a1-491b-a449-b4ce2dadc4b0"
+        Properties="{&quot;globalSectionsUrl&quot;:&quot;https://contoso.sharepoint.com&quot;}">
+    </ClientSideComponentInstance>
+</Elements>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="PageSections"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="d5760b69-c5a1-491b-a449-b4ce2dadc4b0"
+        ClientSideComponentProperties="{&quot;globalSectionsUrl&quot;:&quot;https://contoso.sharepoint.com&quot;}">
+    </CustomAction>
+     <ListInstance
+            CustomSchema="schema.xml"
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="SectionTemplates"
+            Description="SectionTemplates"
+            TemplateType="100"
+            Url="Lists/SectionTemplates">
+    </ListInstance>
+</Elements>

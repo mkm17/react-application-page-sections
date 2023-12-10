@@ -1,0 +1,20 @@
+.commandButton {
+    display: flex;
+    color: "[theme: ButtonText, default: #000000]";
+    padding: 4px;
+    span {
+        border-radius: 4px;
+    }
+
+    &:hover {
+        span {
+            background-color: "[theme: buttonBackgroundHovered, default: #d1d9cf]";
+            color: "[theme: buttonTextHovered, default: #02767a]";
+        }
+    }
+}
+.footerButtons {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
