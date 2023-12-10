@@ -7,7 +7,7 @@ export class Constants {
     public static readonly ToolbarSelector = '[data-canvas-control="toolbar"]';
     public static readonly CancelIconName = 'Cancel';
     public static readonly InfoIconName = 'Info';
-    public static readonly CopyIconName = 'Copy';
+    public static readonly CopyIconName = 'Save';
     public static readonly AddIconName = 'Add';
     public static readonly SectionDefaultIconName = 'ArrangeBringForward';
     public static readonly AcceptIconName = 'AcceptMedium';
