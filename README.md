@@ -39,6 +39,9 @@ The solution allows copying sections with embedded web parts, keeping their whol
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
+## Prerequisites
+
+To make use of the Global Section List, replace the 'globalSectionsUrl' paramenter in the ClientSideInstance.xml and elements.xml files with the URL where the global list has been established, replacing 'https://contoso.sharepoint.com'.
 
 ## Solution
 
