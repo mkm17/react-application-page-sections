@@ -44,7 +44,7 @@ The solution allows copying sections with embedded web parts, keeping their whol
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| react-application-page-sections | Michał Kornet([@kornetmichal](https://x.com/kornetmichal)), [GitHub](https://github.com/mkm17) , [Blog](https://michalkornet.com) |
+| react-application-page-sections | Michał Kornet([@kornetmichal](https://x.com/kornetmichal)), [GitHub](https://github.com/mkm17) , [Blog](https://michalkornet.com), Olga Staszek-Kornet([LinkedIn](https://www.linkedin.com/in/olgastaszek-microsoft365/) |
 
 ## Version history
 
