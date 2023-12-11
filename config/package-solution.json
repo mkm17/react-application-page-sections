@@ -8,11 +8,11 @@
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
-      "websiteUrl": "",
+      "name": "Michał Kornet",
+      "websiteUrl": "https://michalkornet.com",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.18.0"
+      "mpnId": ""
     },
     "metadata": {
       "shortDescription": {
@@ -36,7 +36,7 @@
             "elements.xml",
             "ClientSideInstance.xml"
           ],
-          "elementFiles":[
+          "elementFiles": [
             "schema.xml"
           ]
         }

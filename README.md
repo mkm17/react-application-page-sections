@@ -2,13 +2,35 @@
 
 ## Summary
 
-Short summary on functionality and used technologies.
+[Link to article](https://michalkornet.com/2023/12/09/Custom_SharePoint_Section_Templates.html)
 
-[picture of the solution in action, if possible]
+This feature has been developed in association with Olga Staszek-Kornet, the Microsoft 365 and Power Platform Consultant, and Project Coordinator in the Digital Workplace area—privately, my wife.
+
+## Key features
+
+### 1.Duplication of sections
+
+Our solution facilitates recreating predefined section templates from two distinct sources:
+
+- **Site-specific Section List:** Tailored by site owners and editors, allows for defining site-specific section templates that cater to the unique needs of individual teams or projects.
+- **Global Section List:** Managed by administrators, this global list provides a centralized repository of sections for consistent use across the organization.
+
+### 2. Efficient page creation
+
+By enabling the quick insertion of pre-configured sections, our extension accelerates the page creation process. This not only saves time but also ensures consistency in the layout and structure of SharePoint pages, keeping it in line with the globally applied guidelines.
+
+### 3. Systematized page development
+
+The Section Templates lists serve as a reference point for building cohesive page structures based on repetitive section arrangements. This way, users can easily select and implement sections as major 'building blocks' on their page, simultaneously fostering a company-steered approach to consistent page development.
+
+### 4. Easy way to copy web parts with specific configuration
+
+The solution allows copying sections with embedded web parts, keeping their whole initial configuration. This feature is especially useful when users want to copy a web part with complex or time-consuming configuration, such as the Quick Links web part. Here, the whole configuration is saved in the code, and thus you can place the exact copy of some web part on another page by adding the whole copied section and removing the redundant parts.
+
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.18.0-green.svg)
+![version](https://img.shields.io/badge/version-1.18.2-green.svg)
 
 ## Applies to
 
@@ -17,22 +39,18 @@ Short summary on functionality and used technologies.
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Prerequisites
-
-> Any special pre-requisites?
 
 ## Solution
 
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+| react-application-page-sections | Michał Kornet([@kornetmichal](https://x.com/kornetmichal)), [GitHub](https://github.com/mkm17) , [Blog](https://michalkornet.com) |
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+| 1.0.0.4 | December 10, 2023| Initial release |
 
 ## Disclaimer
 
@@ -49,20 +67,6 @@ Short summary on functionality and used technologies.
   - **gulp serve**
 
 > Include any additional steps as needed.
-
-## Features
-
-Description of the extension that expands upon high-level summary above.
-
-This extension illustrates the following concepts:
-
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
 
 ## References
 
