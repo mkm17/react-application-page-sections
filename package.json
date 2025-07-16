@@ -22,7 +22,12 @@
     "@pnp/spfx-controls-react": "3.15.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "tslib": "2.3.1"
+    "tslib": "2.3.1",
+    "@fluidframework/azure-client": "^2.50.0",
+		"@fluidframework/odsp-client": "^2.50.0",
+		"@fluidframework/telemetry-utils": "^2.50.0",
+		"@fluidframework/test-runtime-utils": "^2.50.0",
+		"fluid-framework": "^2.50.0"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.21.1",

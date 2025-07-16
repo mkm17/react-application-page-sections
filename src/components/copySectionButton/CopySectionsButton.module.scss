@@ -36,8 +36,9 @@
     display: inline;
     padding: 7px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
+    color: #616161;
 }
 .footerButtons {
     margin: 20px 0;
@@ -51,5 +52,5 @@
 }
 
 :global(#copyOptionsContainer) {
-    margin-top: 6px;
+    margin-top: 8px;
 }
