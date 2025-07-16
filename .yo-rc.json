@@ -5,9 +5,9 @@
     "nodeVersion": "16.13.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.12.0"
+      "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.18.2",
+    "version": "1.21.1",
     "libraryName": "react-application-page-sections",
     "libraryId": "7f138a57-ae98-40ad-a362-e232757b1477",
     "environment": "spo",
