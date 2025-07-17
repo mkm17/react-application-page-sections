@@ -126,10 +126,7 @@ export const AddSectionButton: React.FC<IAddSectionButtonProps> = (props) => {
                 section.JSONTemplate
             );
 
-            //window.location.reload();
-            //const url = new URL(window.location.href);
-            //url.searchParams.set('Mode', 'View'); // Replace 'newParam' and 'value' with your desired parameter and value
-            //window.location.href = url.toString();
+            window.location.reload();
         } catch (error) {
             console.error(strings.AddSectionFunctionError, error.message || error);
             throw error

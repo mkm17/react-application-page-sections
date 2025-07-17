@@ -112,78 +112,11 @@ export class SectionService implements ISectionService {
 
             canvasContent = canvasContent.concat(newSection);
 
-            if (true) {
 
+            const isCoAuthoringMode = await this.getIsCoAuthoringMode(currentWeb, currentPageId);
 
-                /*if (!pageContentJson.IsPageCheckedOutToCurrentUser) {
-
-                    await this.spHttpClient.post(
-                        `${currentWeb}/_api/web/GetFileByServerRelativePath(DecodedUrl=@a1)/CheckOut?@a1=%27%2Fsites%2FMediaPark%2FSitePages%2Ftest%281%29%2Easpx%27`,
-                        SPHttpClient.configurations.v1,
-                        {
-    
-    
-                        }
-                    );
-
-                }*/
-
-
-                /*await this.spHttpClient.post(
-                    `https://mknetpl.sharepoint.com/_api/v2.1/drives/b!Z-jDRnmYHkOW-wMtAMqXjf801B2I88lLjnyxyQ7wiQc6VZAxUHixRo-E_ABgbWlu/items/4566ae2c-c701-4aab-9565-decf2e01853a/opStream/joinSession?ump=1`,
-                    SPHttpClient.configurations.v1,
-                    {
-                        headers: {
-                            'If-Match': '*'
-                        },
-                        body: JSON.stringify({
-                            "authoringMetadata":
-                            {
-                                "SessionId": pageContentJson.AuthoringMetadata.SessionId,
-                                "SequenceId": pageContentJson.AuthoringMetadata.SequenceId,
-                                "FluidContainerCustomId": pageContentJson.AuthoringMetadata.FluidContainerCustomId,
-                                "IsSingleUserSession": true,
-                                "ClientOperation": 2
-                            },
-                            "connectivityUpdateReason": 1
-                        })
-
-                    }
-                );*/
-
-
-                /*await this.spHttpClient.post(
-                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/ExtendSessionCoAuth`,
-                    SPHttpClient.configurations.v1,
-                    {
-                        headers: {
-                            'If-Match': '*'
-                        },
-                        body: JSON.stringify({
-                            "authoringMetadata":
-                            {
-                                "SessionId": pageContentJson.AuthoringMetadata.SessionId,
-                                "SequenceId": pageContentJson.AuthoringMetadata.SequenceId,
-                                "FluidContainerCustomId": pageContentJson.AuthoringMetadata.FluidContainerCustomId,
-                                "IsSingleUserSession": true,
-                                "ClientOperation": 2
-                            },
-                            "connectivityUpdateReason": 1
-                        })
-
-                    }
-                );*/
-
-                const pageSeqData = await this.spHttpClient.get(
-                    `https://mknetpl.sharepoint.com/_api/v2.1/drives/b!Z-jDRnmYHkOW-wMtAMqXjf801B2I88lLjnyxyQ7wiQc6VZAxUHixRo-E_ABgbWlu/items/4566ae2c-c701-4aab-9565-decf2e01853a/opStream?ump=1&filter=sequenceNumber%20ge%20${pageContentJson.AuthoringMetadata.SequenceId}%20and%20sequenceNumber%20le%205106`,
-                    SPHttpClient.configurations.v1
-                );
-                const pageSeqDataJson = await pageSeqData.json();
-
-
-                const getLatestSequenceId = pageSeqDataJson.value[pageSeqDataJson.value.length - 1].sequenceNumber;
-
-                const pageCoSaveResult = await this.spHttpClient.post(
+            if (isCoAuthoringMode) {
+                await this.spHttpClient.post(
                     `${currentWeb}/_api/sitepages/pages(${currentPageId})/SavePageCoAuth`,
                     SPHttpClient.configurations.v1,
                     {
@@ -191,78 +124,93 @@ export class SectionService implements ISectionService {
                             'If-Match': '*'
                         },
                         body: JSON.stringify({
-                            //AuthorByline:[],
-                            //BannerImageUrl: pageContentJson.BannerImageUrl,
                             CanvasContent1: JSON.stringify(canvasContent),
-                            //LayoutWebpartsContent: pageContentJson.LayoutWebpartsContent,
-                            //Title: pageContentJson.Title,
-                            //TopicHeader: pageContentJson.TopicHeader,
-                            // WebTranspileContent: pageContentJson.WebTranspileContent,
                             AuthoringMetadata: {
                                 ClientOperation: 3,
-                                //ClientOperation: 2,
                                 FluidContainerCustomId: pageContentJson.AuthoringMetadata.FluidContainerCustomId,
                                 IsSingleUserSession: true,
-                                SequenceId: getLatestSequenceId,
+                                SequenceId: pageContentJson.AuthoringMetadata.SequenceId,
                                 SessionId: pageContentJson.AuthoringMetadata.SessionId
                             },
                             CoAuthState: {
                                 Action: 1,
-                                //LockAction: 1,
                                 LockAction: 2,
                                 SharedLockId: pageContentJson.CoAuthState?.SharedLockId
                             },
                             Collaborators: [
-                                //{ LoginName: "mkornet@mknetpl.onmicrosoft.com" }
                             ]
                         })
                     }
                 );
 
-
-                const pageCoSaveResultJson = await pageCoSaveResult.json();
-                console.log('Page co-save result:', pageCoSaveResultJson);
-
-                
-
-                /*await this.spHttpClient.post(
-                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/ExtendSessionCoAuth`,
-                    SPHttpClient.configurations.v1,
-                    {
-                        headers: {
-                            'If-Match': '*'
-                        },
-                        body: JSON.stringify({
-                            "authoringMetadata":
-                            {
-                                "SessionId": pageContentJson.AuthoringMetadata.SessionId,
-                                "SequenceId": pageContentJson.AuthoringMetadata.SequenceId,
-                                "FluidContainerCustomId": pageContentJson.AuthoringMetadata.FluidContainerCustomId,
-                                "IsSingleUserSession": true,
-                                "ClientOperation": 2
-                            },
-                            "connectivityUpdateReason": 1
-                        })
-
-                    }
-                );*/
-            }
-            else {
                 await this.spHttpClient.post(
-                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/savepage`,
+                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/discardCoAuth?$expand=VersionInfo`,
                     SPHttpClient.configurations.v1,
                     {
-                        headers: {
-                            'accept': 'application/json;odata=nometadata',
-                            'content-type': 'application/json;odata=nometadata',
-                            'If-Match': '*'
-                        },
                         body: JSON.stringify({
-                            CanvasContent1: JSON.stringify(canvasContent)
+                            lockId: pageContentJson.AuthoringMetadata.SessionId
                         })
                     }
                 );
+
+                //retry checkout 5 times
+
+                const maxRetries = 5;
+                let retryCount = 0;
+                let incorrect = false;
+
+                while (retryCount < maxRetries && !incorrect) {
+                    try {
+                        const checkoutResult = await this.spHttpClient.post(
+                            `${currentWeb}/_api/sitepages/pages(${currentPageId})/checkoutpage`,
+                            SPHttpClient.configurations.v1,
+                            {
+
+                            }
+                        );
+
+                        const checkoutResultJson = await checkoutResult.json();
+                        if (checkoutResultJson && checkoutResultJson.error) {
+                            incorrect = false;
+                            retryCount++;
+                            await new Promise(resolve => setTimeout(resolve, 2000)); // Wait before retrying
+                        }
+                        else {
+                            incorrect = true;
+                        }
+
+                    } catch {
+                        incorrect = false;
+                        retryCount++;
+                        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait before retrying
+                    }
+                }
+
+
+                await this.spHttpClient.post(
+                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/checkoutpage`,
+                    SPHttpClient.configurations.v1,
+                    {
+
+                    }
+                );
             }
+
+            await this.spHttpClient.post(
+                `${currentWeb}/_api/sitepages/pages(${currentPageId})/savepage`,
+                SPHttpClient.configurations.v1,
+                {
+                    headers: {
+                        'accept': 'application/json;odata=nometadata',
+                        'content-type': 'application/json;odata=nometadata',
+                        'If-Match': '*'
+                    },
+                    body: JSON.stringify({
+                        CanvasContent1: JSON.stringify(canvasContent)
+                    })
+                }
+            );
+            
         } catch (error) {
             console.error('Error adding section to page:', error);
             throw error;
@@ -281,6 +229,29 @@ export class SectionService implements ISectionService {
         } catch (error) {
             console.error('Error checking user permissions:', error);
             throw error;
+        }
+    }
+
+    private getIsCoAuthoringMode = async (currentWeb: string, currentPageId: number): Promise<boolean> => {
+        try {
+            const pageCoAuthResult = await this.spHttpClient.post(
+                `${currentWeb}/_api/sitepages/pages(${currentPageId})/ExtendSessionCoAuth`,
+                SPHttpClient.configurations.v1,
+                {
+                    headers: {
+                        'If-Match': '*'
+                    }
+                }
+            );
+            const pageCoAuthResultJson = await pageCoAuthResult.json();
+            if (pageCoAuthResultJson && pageCoAuthResultJson.error) {
+                return false;
+            }
+
+            return true;
+
+        } catch {
+            return false;
         }
     }
 }

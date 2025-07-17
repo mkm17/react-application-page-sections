@@ -27,10 +27,18 @@ The Section Templates lists serve as a reference point for building cohesive pag
 
 The solution allows copying sections with embedded web parts, keeping their whole initial configuration. This feature is especially useful when users want to copy a web part with complex or time-consuming configuration, such as the Quick Links web part. Here, the whole configuration is saved in the code, and thus you can place the exact copy of some web part on another page by adding the whole copied section and removing the redundant parts.
 
+### CoAuthoring remarks
+
+The solution version 1.0.0.5 has been updated to SPFx 1.21.1 and includes fixes for page co-authoring.
+
+The solution allows saving the page even when it is being edited by multiple users simultaneously. Unfortunately, due to certain limitations, after using the Add Section button, the page will reload in standard editing mode. This means that other editors will no longer be able to edit the page at the same time.
+
+To continue editing the page in co-authoring mode, you need to save and edit the page again.
+
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.18.2-green.svg)
+![version](https://img.shields.io/badge/version-1.21.1-green.svg)
 
 ## Applies to
 
@@ -54,6 +62,7 @@ To make use of the Global Section List, replace the 'globalSectionsUrl' parament
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0.0.4 | December 10, 2023| Initial release |
+| 1.0.0.5 | July 17, 2025   | Update version to SPFx 1.21.1, fixes for pageCoAuthoring|
 
 ## Disclaimer
 

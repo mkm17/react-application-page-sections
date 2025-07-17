@@ -46,6 +46,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "gulp": "4.0.2",
     "spfx-fast-serve-helpers": "~1.21.1",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "@fluidframework/devtools": "^2.50.0",
+    "@fluidframework/build-common": "^2.0.3"
   }
 }
