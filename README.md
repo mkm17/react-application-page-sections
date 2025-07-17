@@ -29,8 +29,6 @@ The solution allows copying sections with embedded web parts, keeping their whol
 
 ### CoAuthoring remarks
 
-The solution version 1.0.0.5 has been updated to SPFx 1.21.1 and includes fixes for page co-authoring.
-
 The solution allows saving the page even when it is being edited by multiple users simultaneously. Unfortunately, due to certain limitations, after using the Add Section button, the page will reload in standard editing mode. This means that other editors will no longer be able to edit the page at the same time.
 
 To continue editing the page in co-authoring mode, you need to save and edit the page again.
@@ -62,7 +60,7 @@ To make use of the Global Section List, replace the 'globalSectionsUrl' parament
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0.0.4 | December 10, 2023| Initial release |
-| 1.0.0.5 | July 17, 2025   | Update version to SPFx 1.21.1, fixes for pageCoAuthoring|
+| 1.0.0.5 | July 17, 2025   | Fixes for pageCoAuthoring|
 
 ## Disclaimer
 
