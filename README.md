@@ -38,7 +38,7 @@ To continue editing the page in co-authoring mode, you need to save and edit the
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.21.1-green.svg)
+![version](https://img.shields.io/badge/version-1.18.2-green.svg)
 
 ## Applies to
 
