@@ -109,8 +109,92 @@ export class SectionService implements ISectionService {
                 column.position.zoneIndex = newSectionIndex;
                 column.position.zoneId = newZoneId;
             }
-            
+
             canvasContent = canvasContent.concat(newSection);
+
+
+            const isCoAuthoringMode = await this.getIsCoAuthoringMode(currentWeb, currentPageId);
+
+            if (isCoAuthoringMode) {
+                await this.spHttpClient.post(
+                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/SavePageCoAuth`,
+                    SPHttpClient.configurations.v1,
+                    {
+                        headers: {
+                            'If-Match': '*'
+                        },
+                        body: JSON.stringify({
+                            CanvasContent1: JSON.stringify(canvasContent),
+                            AuthoringMetadata: {
+                                ClientOperation: 3,
+                                FluidContainerCustomId: pageContentJson.AuthoringMetadata.FluidContainerCustomId,
+                                IsSingleUserSession: true,
+                                SequenceId: pageContentJson.AuthoringMetadata.SequenceId,
+                                SessionId: pageContentJson.AuthoringMetadata.SessionId
+                            },
+                            CoAuthState: {
+                                Action: 1,
+                                LockAction: 2,
+                                SharedLockId: pageContentJson.CoAuthState?.SharedLockId
+                            },
+                            Collaborators: [
+                            ]
+                        })
+                    }
+                );
+
+                await this.spHttpClient.post(
+                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/discardCoAuth?$expand=VersionInfo`,
+                    SPHttpClient.configurations.v1,
+                    {
+                        body: JSON.stringify({
+                            lockId: pageContentJson.AuthoringMetadata.SessionId
+                        })
+                    }
+                );
+
+                //retry checkout 5 times
+
+                const maxRetries = 5;
+                let retryCount = 0;
+                let incorrect = false;
+
+                while (retryCount < maxRetries && !incorrect) {
+                    try {
+                        const checkoutResult = await this.spHttpClient.post(
+                            `${currentWeb}/_api/sitepages/pages(${currentPageId})/checkoutpage`,
+                            SPHttpClient.configurations.v1,
+                            {
+
+                            }
+                        );
+
+                        const checkoutResultJson = await checkoutResult.json();
+                        if (checkoutResultJson && checkoutResultJson.error) {
+                            incorrect = false;
+                            retryCount++;
+                            await new Promise(resolve => setTimeout(resolve, 2000)); // Wait before retrying
+                        }
+                        else {
+                            incorrect = true;
+                        }
+
+                    } catch {
+                        incorrect = false;
+                        retryCount++;
+                        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait before retrying
+                    }
+                }
+
+
+                await this.spHttpClient.post(
+                    `${currentWeb}/_api/sitepages/pages(${currentPageId})/checkoutpage`,
+                    SPHttpClient.configurations.v1,
+                    {
+
+                    }
+                );
+            }
 
             await this.spHttpClient.post(
                 `${currentWeb}/_api/sitepages/pages(${currentPageId})/savepage`,
@@ -126,6 +210,7 @@ export class SectionService implements ISectionService {
                     })
                 }
             );
+            
         } catch (error) {
             console.error('Error adding section to page:', error);
             throw error;
@@ -144,6 +229,29 @@ export class SectionService implements ISectionService {
         } catch (error) {
             console.error('Error checking user permissions:', error);
             throw error;
+        }
+    }
+
+    private getIsCoAuthoringMode = async (currentWeb: string, currentPageId: number): Promise<boolean> => {
+        try {
+            const pageCoAuthResult = await this.spHttpClient.post(
+                `${currentWeb}/_api/sitepages/pages(${currentPageId})/ExtendSessionCoAuth`,
+                SPHttpClient.configurations.v1,
+                {
+                    headers: {
+                        'If-Match': '*'
+                    }
+                }
+            );
+            const pageCoAuthResultJson = await pageCoAuthResult.json();
+            if (pageCoAuthResultJson && pageCoAuthResultJson.error) {
+                return false;
+            }
+
+            return true;
+
+        } catch {
+            return false;
         }
     }
 }

@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-application-page-sections-client-side-solution",
     "id": "7f138a57-ae98-40ad-a362-e232757b1477",
-    "version": "1.0.0.4",
+    "version": "1.0.0.5",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

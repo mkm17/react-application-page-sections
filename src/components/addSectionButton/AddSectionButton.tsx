@@ -126,7 +126,7 @@ export const AddSectionButton: React.FC<IAddSectionButtonProps> = (props) => {
                 section.JSONTemplate
             );
 
-            location.reload();
+            window.location.reload();
         } catch (error) {
             console.error(strings.AddSectionFunctionError, error.message || error);
             throw error
