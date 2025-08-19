@@ -1,6 +1,10 @@
 {
   "name": "react-application-page-sections",
   "version": "1.0.1",
+  "author": {
+    "name": "Michał Kornet",
+    "url": "https://github.com/mkm17"
+  },
   "private": true,
   "engines": {
     "node": ">=  <17.0.0 || >=18.17.1 <19.0.0"
